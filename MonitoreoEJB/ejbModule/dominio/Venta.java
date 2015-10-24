@@ -33,13 +33,15 @@ public class Venta implements Serializable{
 	private List<ItemVenta> itemsVenta;
 
 	//CONSTANTES
-	public static final String CON_VENTANODESPACHADA 		= "ND";
-	public static final String CON_VENTADESPACHADA 			= "SD";
+	public static final String  con_noDespachada 		= "NO";
+	public static final String con_despachada 			= "SI";
 	
 	public float calcularMonto(){
 		float monto = 0;
+		float i=0;
 		for(ItemVenta itemVenta : this.getItemsVenta()){
-			monto += itemVenta.getProducto().getPrecio()*itemVenta.getCantidad();
+			i= itemVenta.getProducto().getPrecio()*itemVenta.getCantidad();
+			monto=monto+i;
 		}
 		return monto;	
 	}

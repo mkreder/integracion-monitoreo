@@ -1,5 +1,6 @@
 package dominio;
 
+
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -15,8 +16,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="DespachoVentaPreventivo")
-public class DespachoVentaPreventivo implements Serializable{
+@Table(name="DespachoSugerido")
+public class DespachoSugerido implements Serializable{
 
 	
 	/**
