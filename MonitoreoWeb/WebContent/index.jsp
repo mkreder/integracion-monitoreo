@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Logistica y Monitoreo</title>
-<a href="/despachos">Despachos</a>
+<a href="SVDespachos">Despachos</a>
 </head>
 <body>
 
