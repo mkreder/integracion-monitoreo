@@ -9,7 +9,7 @@ import vos.VoVenta;
 @Remote
 public interface IFachada {
 
-	boolean procesarVenta(VoVenta venta);
+	String procesarVenta(VoVenta venta);
 
 	void generarInformeAuditoria(InformeDeAuditoria i);
 }

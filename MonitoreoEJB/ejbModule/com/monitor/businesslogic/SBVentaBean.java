@@ -1,3 +1,4 @@
+ 
 package com.monitor.businesslogic;
 
 import javax.ejb.LocalBean;
@@ -34,25 +35,25 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public boolean procesarVenta(VoVenta voVenta) {
-			System.out.println("LLEGUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-			return true;
-		/*	Venta venta = new Venta();
+		public String procesarVenta(VoVenta voVenta) {
+			System.out.println("Estoy procesando la venta");
+		 /*
+		Venta venta = new Venta();
 			Cliente cliente = (Cliente) manager
 					.createQuery("select c from Cliente c where c.dni= :Dni")
 					.setMaxResults(1)
-					.setParameter("Dni", Long.valueOf(voVenta.getCliente().getDni()))
+					.setParameter("Dni", Long.valueOf(voVenta.getDni()))
 					.getSingleResult();
 			if (cliente != null)
 				venta.setCliente(cliente);
 			else
-				return false;
-			venta.setCodigo(voVenta.getCodigo());
+				return "Error al procesar la venta";
+			venta.setCodigo(voVenta.getCodigoVenta());
 			venta.setEstado((Venta.con_noDespachada));//Esto sacarlo que cuando se cree la venta se inicialice el estado sin despachar
-			venta.setFecha(voVenta.getFecha());
-			List<VoItemVenta> itemsVOVenta = voVenta.getItemsVenta();
+			venta.setFecha(voVenta.getFechaHoraVenta());
+			List<VoItemVenta> itemsVOVenta = voVenta.getCollectionItems();
 			if (itemsVOVenta.size() == 0)
-				return false;
+				return "Error al procesar la venta";
 			List<ItemVenta> itemsVenta = new ArrayList<ItemVenta>();
 			for (VoItemVenta item : itemsVOVenta) {
 				Producto producto = (Producto) manager
@@ -63,7 +64,7 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 								Long.valueOf(item.getProducto().getCodigo()))
 						.getSingleResult();
 				if (producto == null)
-					return false;
+					return "Error al procesar la venta";
 				ItemVenta itemVenta = new ItemVenta();
 				itemVenta.setProducto(producto);
 				itemVenta.setCantidad(item.getCantidad());
@@ -77,16 +78,16 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 			venta.setItemsVenta(itemsVenta);
 			venta.setOrdenDespacho(null);
 			//No hace falta
-			System.out.println(voVenta.getPortal().getCodigo());
+			System.out.println(voVenta.getCodigoPortal());
 			
 			Portal portal = (Portal) manager
 					.createQuery(
 							"select p from Portal p where p.codigo = :codPortal")
 					.setParameter("codPortal",
-							Long.valueOf(voVenta.getPortal().getCodigo()))
+							Long.valueOf(voVenta.getCodigoPortal()))
 					.setMaxResults(1).getSingleResult();
 			if (portal == null)
-				return false;
+				return "Error al procesar la venta";
 			venta.setPortal(portal);
 			//ver si me guarda los items relacionados a la venta
 					manager.persist(venta);
@@ -97,10 +98,10 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 					.createQuery("select d from Despacho d where d.estado = true");
 			despachosActivos = (ArrayList<Despacho>) queryDespachos.getResultList();
 			if (despachosActivos.size() <= 0)
-				return false;
+				return "Error al procesar la venta";
 
-			float cordenadasX = Float.valueOf(voVenta.getCliente().getCoordenada().split(",")[0]);
-			float cordenadasY = Float.valueOf(voVenta.getCliente().getCoordenada().split(",")[1]);
+			float cordenadasX = Float.valueOf(voVenta.getCoordenadasUsuario().split(",")[0]);
+			float cordenadasY = Float.valueOf(voVenta.getCoordenadasUsuario().split(",")[1]);
 			DespachoSugerido sugerido = new DespachoSugerido();
 			sugerido.setVenta(venta);
 			// Busco el despacho m?s cercano al usuario segun sus cordenadas
@@ -117,9 +118,11 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 				}
 			}
 			manager.persist(sugerido);
-			return true;
+			return "OK al procesar la venta";
 			*/
+			return "error al procesar la venta";
 		}
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public ArrayList<DespachoSugerido> obtenerVentasSinOrdenesDeDespacho() {

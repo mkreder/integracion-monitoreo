@@ -25,7 +25,7 @@ public class WSProcVentaBean implements IWSProcVenta {
 	@SuppressWarnings("unchecked")
 	@Override
 	@WebMethod
-	public boolean procesarVenta(VoVenta venta) {
+	public String procesarVenta(VoVenta venta) {
 		 return fachada.procesarVenta(venta);
 		 
 	}	

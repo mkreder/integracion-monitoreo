@@ -4,6 +4,6 @@ import vos.VoVenta;
 
 public interface IWSProcVenta {
 
-	boolean procesarVenta(VoVenta venta);
+	String procesarVenta(VoVenta venta);
 
 }

@@ -16,7 +16,7 @@ public class Fachada implements IFachada {
 	@EJB 
 	ISBInformesAuditoria SBinforme;
 	@Override
-	public boolean procesarVenta(VoVenta venta) {
+	public String procesarVenta(VoVenta venta) {
 		return SBventa.procesarVenta(venta);
 	}
 	@Override

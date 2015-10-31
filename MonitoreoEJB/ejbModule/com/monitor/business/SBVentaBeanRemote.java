@@ -11,7 +11,7 @@ import vos.VoVenta;
 
 @Remote
 public interface SBVentaBeanRemote {
-	boolean procesarVenta(VoVenta voVenta);
+	String procesarVenta(VoVenta voVenta);
 
 	ArrayList<DespachoSugerido> obtenerVentasSinOrdenesDeDespacho();
 

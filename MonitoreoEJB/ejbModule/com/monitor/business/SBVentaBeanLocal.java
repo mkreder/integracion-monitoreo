@@ -12,7 +12,7 @@ import vos.VoVenta;
 @Local
 public interface SBVentaBeanLocal {
 
-	boolean procesarVenta(VoVenta voVenta);
+	String procesarVenta(VoVenta voVenta);
 
 	ArrayList<DespachoSugerido> obtenerVentasSinOrdenesDeDespacho();
 
