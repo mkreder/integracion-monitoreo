@@ -8,12 +8,13 @@ import javax.jws.WebService;
 import com.monitor.Fachada.IFachada;
 import com.monitor.webServiceInterface.IWSProcVenta;
 
+import vos.VoCarrito;
 import vos.VoVenta;
 
  
  
 
-@Stateless
+ 
 @WebService
 public class WSProcVentaBean implements IWSProcVenta {
 	
@@ -29,5 +30,12 @@ public class WSProcVentaBean implements IWSProcVenta {
 		 return fachada.procesarVenta(venta);
 		 
 	}	
+	@SuppressWarnings("unchecked")
+	@Override
+	@WebMethod
+	public String procesarCarrito(VoCarrito carrito) {
+		 return fachada.procesarCarrito(carrito);
+		 
+	}
 	
 }

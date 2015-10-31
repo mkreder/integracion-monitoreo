@@ -7,6 +7,7 @@ import javax.ejb.Local;
 import dominio.Despacho;
 import dominio.DespachoSugerido;
 import dominio.Venta;
+import vos.VoCarrito;
 import vos.VoVenta;
 
 @Local
@@ -27,5 +28,7 @@ public interface SBVentaBeanLocal {
 	Venta obtenerVenta(long idVenta);
 
 	Venta obtenerVentaPorCodigo(long codVta);
+
+	String procesarCarrito(VoCarrito carrito);
 
 }

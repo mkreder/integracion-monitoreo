@@ -6,6 +6,7 @@ import com.monitor.business.ISBInformesAuditoria;
 import com.monitor.business.SBVentaBeanLocal;
 
 import dominio.InformeDeAuditoria;
+import vos.VoCarrito;
 import vos.VoVenta;
 
 @Stateless
@@ -23,6 +24,10 @@ public class Fachada implements IFachada {
 	public void generarInformeAuditoria(InformeDeAuditoria i) {
 		SBinforme.generarInformeAuditoria(i);
 		
+	}
+	public String procesarCarrito(VoCarrito carrito){
+		return SBventa.procesarCarrito(carrito);
+	}
 	}
 }
  

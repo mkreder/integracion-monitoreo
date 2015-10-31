@@ -270,4 +270,10 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 			venta = (Venta) query.getSingleResult();
 			return venta;
 		}
+		@Override
+		public String procesarCarrito(VoCarrito carrito){
+			System.out.println("SIMULO QUE HAGO ALGO CON EL CARRITO");
+			return "Carrito OK";
+		}
+		}
 }
