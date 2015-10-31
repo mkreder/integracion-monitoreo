@@ -13,6 +13,9 @@ public class VoPortal implements Serializable {
 	private long codigo;
 	private String descripcion;
 	
+	
+	
+	
 	/*GETTERS Y SETTERS*/
 	
  
