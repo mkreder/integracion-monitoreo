@@ -15,7 +15,6 @@ public class VoPortal implements Serializable {
 	
 	
 	
-	
 	/*GETTERS Y SETTERS*/
 	
  
