@@ -49,7 +49,7 @@ public class JMSInforme implements MessageListener {
     			informeAuditoria.setDescripcion(voInformeAuditoria.getDescripcion());
     			informeAuditoria.setFecha(new Date());
     			fachada.generarInformeAuditoria(informeAuditoria);
-    			System.out.println("----------- Se realizó el informe correctamente -----------");
+    			System.out.println("----------- Se realizï¿½ el informe correctamente -----------");
         	}
         	finally
         	{
@@ -60,7 +60,7 @@ public class JMSInforme implements MessageListener {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("----------- Error al realizar el informe de auditoría -----------");
+			System.out.println("----------- Error al realizar el informe de auditorï¿½a -----------");
 			System.out.println(e.getMessage());
 		}
     }
