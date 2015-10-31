@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import com.monitor.Fachada.IFachada;
+import fachada.IFachada;
 
 import vos.VoDespacho;
 import vos.VoVenta;
@@ -60,7 +60,7 @@ public class BD {
 //			 adminFachada = (FachadaLogYMon) context
 //					.lookup(appName + "/" + moduleName + "/" + sessionBeanName
 //							+ "!" + viewClassName);
-			adminFachada = (IFachada)context.lookup("java:global/TPO_Logistica_Y_MonitoreoEAR/TPO_Logistica_Y_MonitoreoEJB/FachadaLogYMonBean!sessionFacade.FachadaLogYMon");
+			adminFachada = (IFachada)context.lookup("java:global/MonitoreoEAR/MonitoreoEJB/FachadaLogYMonBean!sessionFacade.FachadaLogYMon");
 
 		} catch (Exception e) {
 			System.out.println("error al levantar servicio");

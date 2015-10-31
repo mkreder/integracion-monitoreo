@@ -32,7 +32,7 @@ public class SVDespachos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("action").equals("") || request.getParameter("action") == null ) {
+		if (request.getParameter("action") == null ) {
 			ArrayList<VoDespacho> despachos = BD.getInstancia().obtenerDespachosActivos();
 			ArrayList<VoVenta> ventassionod = BD.getInstancia().obtenerVentasSinOrdenesDeDespacho();
 			request.setAttribute("despachos", despachos);
