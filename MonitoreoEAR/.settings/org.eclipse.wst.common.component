@@ -5,8 +5,5 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="MonitoreoEJBClient.jar" deploy-path="/" handle="module:/resource/MonitoreoEJBClient/MonitoreoEJBClient">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>

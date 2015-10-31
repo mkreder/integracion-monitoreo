@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>MonitoreoEJB</project>
-		<project>MonitoreoEJBClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
