@@ -28,7 +28,7 @@ public class TestTPO {
 
 	public static void main(String[] args) throws NamingException, JMSException {
 		// TODO Auto-generated method stub
-		metodoJMS2();
+	//	metodoJMS2();
 try {
 	metodoWebService();
 } catch (RemoteException e) {

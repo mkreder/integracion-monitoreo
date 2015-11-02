@@ -1,9 +1,12 @@
 package com.monitor.webServiceInterface;
 
+import vos.VoCarrito;
 import vos.VoVenta;
 
 public interface IWSProcVenta {
 
-	boolean procesarVenta(VoVenta venta);
+	String procesarVenta(VoVenta venta);
+
+	String procesarCarrito(VoCarrito carrito);
 
 }

@@ -9,6 +9,7 @@ import com.monitor.business.SBVentaBeanLocal;
 
 import dominio.InformeDeAuditoria;
 import vos.VoDespacho;
+import vos.VoCarrito;
 import vos.VoVenta;
 
 @Stateless
@@ -19,7 +20,7 @@ public class Fachada implements IFachada {
 	@EJB 
 	ISBInformesAuditoria SBinforme;
 	@Override
-	public boolean procesarVenta(VoVenta venta) {
+	public String procesarVenta(VoVenta venta) {
 		return SBventa.procesarVenta(venta);
 	}
 	@Override
@@ -36,6 +37,8 @@ public class Fachada implements IFachada {
 	public ArrayList<VoDespacho> obtenerDespachosActivos() {
 		// TODO Auto-generated method stub
 		return null;
+	public String procesarCarrito(VoCarrito carrito){
+		return SBventa.procesarCarrito(carrito);
 	}
 }
  

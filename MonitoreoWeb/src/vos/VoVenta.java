@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import dominio.ItemVenta;
+
 public class VoVenta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -25,9 +27,9 @@ public class VoVenta implements Serializable{
 	public float calcularMonto(){
 		float monto = 0;
 		float i=0;
-		for(ItemVenta itemVenta : this.getItemsVenta()){
-			i= itemVenta.getProducto().getPrecio()*itemVenta.getCantidad();
-			monto=monto+i
+		for(VoItemVenta VOitemVenta : this.getItemsVenta()){
+			i= VOitemVenta.getProducto().getPrecio()*VOitemVenta.getCantidad();
+			monto=monto+i;
 		}
 		return monto;	
 	}
