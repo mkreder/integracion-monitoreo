@@ -7,13 +7,13 @@ import javax.ejb.Local;
 import dominio.Despacho;
 import dominio.DespachoSugerido;
 import dominio.Venta;
-import vos.VoCarrito;
-import vos.VoVenta;
+import vos.VentaDTO;
+ 
 
 @Local
 public interface SBVentaBeanLocal {
 
-	String procesarVenta(VoVenta voVenta);
+	String procesarVenta(VentaDTO voVenta);
 
 	ArrayList<DespachoSugerido> obtenerVentasSinOrdenesDeDespacho();
 
@@ -29,6 +29,6 @@ public interface SBVentaBeanLocal {
 
 	Venta obtenerVentaPorCodigo(long codVta);
 
-	String procesarCarrito(VoCarrito carrito);
+	String procesarCarrito(String carrito);
 
 }

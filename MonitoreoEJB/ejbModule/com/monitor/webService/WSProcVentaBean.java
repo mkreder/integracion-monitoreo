@@ -8,34 +8,42 @@ import javax.jws.WebService;
 import com.monitor.Fachada.IFachada;
 import com.monitor.webServiceInterface.IWSProcVenta;
 
-import vos.VoCarrito;
-import vos.VoVenta;
+import vos.ResultadoDTO;
+
+import vos.VentaDTO;
 
  
  
 
- 
+@Stateless
 @WebService
 public class WSProcVentaBean implements IWSProcVenta {
 	
 	@EJB
 	IFachada fachada;
+	@Override
+	@WebMethod
+	public java.lang.String notificarCarrito(String notificacion) {
+		
+		fachada.procesarCarrito(notificacion);
+	return "OK";
+	
+	}
+	@Override
+	@WebMethod
+	public ResultadoDTO notificarVenta(VentaDTO venta){
+		
+ 
 
+	ResultadoDTO res= new ResultadoDTO();
+	
+	res.setEstado(fachada.procesarVenta(venta));
+	
+	return res;
+	}
 	public WSProcVentaBean() {
 	}
-	@SuppressWarnings("unchecked")
-	@Override
-	@WebMethod
-	public String procesarVenta(VoVenta venta) {
-		 return fachada.procesarVenta(venta);
-		 
-	}	
-	@SuppressWarnings("unchecked")
-	@Override
-	@WebMethod
-	public String procesarCarrito(VoCarrito carrito) {
-		 return fachada.procesarCarrito(carrito);
-		 
-	}
+
+	 
 	
 }

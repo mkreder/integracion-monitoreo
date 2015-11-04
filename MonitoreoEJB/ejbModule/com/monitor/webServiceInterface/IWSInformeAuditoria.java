@@ -1,9 +1,9 @@
 package com.monitor.webServiceInterface;
 
-import vos.VoInformeDeAuditoria;
+import vos.LogDTO;
 
 public interface IWSInformeAuditoria {
 
-	boolean agregarInforme(VoInformeDeAuditoria informeAuditoria);
+	boolean agregarInforme(LogDTO informeAuditoria);
 
 }

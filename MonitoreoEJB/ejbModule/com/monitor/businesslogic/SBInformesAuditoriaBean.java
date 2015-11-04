@@ -4,11 +4,13 @@ package com.monitor.businesslogic;
 
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.ejb.LocalBean;
@@ -20,6 +22,7 @@ import javax.persistence.Query;
 import com.monitor.business.ISBInformesAuditoria;
 
 import dominio.InformeDeAuditoria;
+import vos.LogDTO;
 
 
  
@@ -34,7 +37,15 @@ public class SBInformesAuditoriaBean implements ISBInformesAuditoria {
     }
 
 	@Override
-	public void generarInformeAuditoria(InformeDeAuditoria informeAuditoria) {
+	public void generarInformeAuditoria(LogDTO i) throws ParseException {
+		InformeDeAuditoria informeAuditoria= new InformeDeAuditoria();
+		 
+			informeAuditoria.setFecha(new Date());
+		informeAuditoria.setModulo(i.getIdModulo());
+		informeAuditoria.setDescripcion(i.getMensaje());
+		
+		
+		
 		manager.persist(informeAuditoria);
 		System.out.println("GRABE");
 	}

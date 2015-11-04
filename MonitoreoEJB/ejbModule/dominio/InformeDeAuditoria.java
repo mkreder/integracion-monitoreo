@@ -18,7 +18,7 @@ public class InformeDeAuditoria implements Serializable{
 	private long id;
 	private Date fecha;
 	private String descripcion;
-	
+	private String modulo;
 	/*GETTERS Y SETTERS*/
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -44,6 +44,14 @@ public class InformeDeAuditoria implements Serializable{
 	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(String modulo) {
+		this.modulo = modulo;
 	}
 	
 }

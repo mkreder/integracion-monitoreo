@@ -35,7 +35,7 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public String procesarVenta(VoVenta voVenta) {
+		public String procesarVenta(VentaDTO voVenta) {
 			System.out.println("Estoy procesando la venta");
 		 /*
 		Venta venta = new Venta();
@@ -271,9 +271,11 @@ public class SBVentaBean implements SBVentaBeanRemote, SBVentaBeanLocal {
 			return venta;
 		}
 		@Override
-		public String procesarCarrito(VoCarrito carrito){
+		public String procesarCarrito(String carrito){
 			System.out.println("SIMULO QUE HAGO ALGO CON EL CARRITO");
 			return "Carrito OK";
 		}
-		}
+
+	
+		
 }

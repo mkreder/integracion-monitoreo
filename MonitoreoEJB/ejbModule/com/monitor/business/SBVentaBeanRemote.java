@@ -7,11 +7,12 @@ import javax.ejb.Remote;
 import dominio.Despacho;
 import dominio.DespachoSugerido;
 import dominio.Venta;
-import vos.VoVenta;
+import vos.VentaDTO;
+ 
 
 @Remote
 public interface SBVentaBeanRemote {
-	String procesarVenta(VoVenta voVenta);
+	String procesarVenta(VentaDTO voVenta);
 
 	ArrayList<DespachoSugerido> obtenerVentasSinOrdenesDeDespacho();
 

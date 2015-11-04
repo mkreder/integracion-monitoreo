@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="LogisticaMonitoreoWSService" targetNamespace="http://example.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://example.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://example.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+     
+      <xs:element name="notificarCarrito" type="tns:notificarCarrito"/>
+	 <xs:element name="notificarCarritoResponse" type="tns:notificarCarritoResponse"/>
+      <xs:element name="notificarVenta" type="tns:notificarVenta"/>
+      <xs:element name="notificarVentaResponse" type="tns:notificarVentaResponse"/>
+      
+      
+      <xs:complexType name="notificarVenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+<xs:complexType name="notificarVentaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+<xs:complexType name="notificarCarrito">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+<xs:complexType name="notificarCarritoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+      
+     
+    </xs:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="notificarCarrito">
+    <wsdl:part element="tns:notificarCarrito" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notificarVenta">
+    <wsdl:part element="tns:notificarVenta" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notificarCarritoResponse">
+    <wsdl:part element="tns:notificarCarritoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notificarVentaResponse">
+    <wsdl:part element="tns:notificarVentaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+ 
+ 
+  <wsdl:portType name="LogisticaMonitoreoWS">
+   
+     <wsdl:operation name="notificarVenta">
+      <wsdl:input message="tns:notificarVenta" name="notificarVenta">
+    </wsdl:input>
+      <wsdl:output message="tns:notificarVentaResponse" name="notificarVentaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notificarCarrito">
+      <wsdl:input message="tns:notificarCarrito" name="notificarCarrito">
+    </wsdl:input>
+      <wsdl:output message="tns:notificarCarritoResponse" name="notificarCarritoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    
+  </wsdl:portType>
+  
+  <wsdl:binding name="LogisticaMonitoreoWSServiceSoapBinding" type="tns:LogisticaMonitoreoWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        
+     <wsdl:operation name="notificarVenta">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="notificarVenta">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="notificarVentaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notificarCarrito">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="notificarCarrito">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="notificarCarritoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    
+  </wsdl:binding>
+  <wsdl:service name="LogisticaMonitoreoWSService">
+    <wsdl:port binding="tns:LogisticaMonitoreoWSServiceSoapBinding" name="LogisticaMonitoreoWSPort">
+      <soap:address location="http://localhost:8080/LogisticaMonitoreo/LogisticaMonitoreoWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

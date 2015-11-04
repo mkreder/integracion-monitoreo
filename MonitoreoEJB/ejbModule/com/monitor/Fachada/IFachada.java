@@ -1,25 +1,19 @@
 package com.monitor.Fachada;
 
-import java.util.ArrayList;
+import java.text.ParseException;
 
 import javax.ejb.Remote;
 
-import dominio.InformeDeAuditoria;
-=======
-import vos.VoCarrito;
-import vos.VoVenta;
-import vos.VoDespacho;
 
+import vos.LogDTO;
+import vos.VentaDTO;
+ 
 @Remote
 public interface IFachada {
 
-	String procesarVenta(VoVenta venta);
+	String procesarVenta(VentaDTO venta);
 
-	void generarInformeAuditoria(InformeDeAuditoria i);
+	void generarInformeAuditoria(LogDTO i) throws ParseException;
 
-	ArrayList<VoVenta> obtenerVentasSinOrdenesDeDespacho();
-
-	ArrayList<VoDespacho> obtenerDespachosActivos();
-
-	String procesarCarrito(VoCarrito carrito);
+	String procesarCarrito(String notificacion);
 }

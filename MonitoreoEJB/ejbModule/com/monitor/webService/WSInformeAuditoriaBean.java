@@ -11,7 +11,8 @@ import com.monitor.Fachada.IFachada;
 import com.monitor.webServiceInterface.IWSInformeAuditoria;
 
 import dominio.InformeDeAuditoria;
-import vos.VoInformeDeAuditoria;
+import vos.LogDTO;
+
  
 @Stateless
 @WebService
@@ -26,13 +27,12 @@ public class WSInformeAuditoriaBean implements IWSInformeAuditoria {
 
     @WebMethod
     @Override
-    public boolean agregarInforme(VoInformeDeAuditoria informeAuditoria){
-    	InformeDeAuditoria i= new InformeDeAuditoria();
+    public boolean agregarInforme(LogDTO informeAuditoria){
+    	 
     	try {
-    		i.setDescripcion(informeAuditoria.getDescripcion());
-        	i.setFecha(new Date());
+    		 
         	//Agregar el modulo q lo mando supongo q el id
-        	fachada.generarInformeAuditoria(i);
+        	fachada.generarInformeAuditoria(informeAuditoria);
         	return true;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -13,7 +13,8 @@ import javax.jms.ObjectMessage;
 import com.monitor.Fachada.IFachada;
 
 import dominio.InformeDeAuditoria;
-import vos.VoInformeDeAuditoria;
+import vos.LogDTO;
+ 
 
 /**
  * Message-Driven Bean implementation class for: JMSInforme
@@ -44,12 +45,15 @@ public class JMSInforme implements MessageListener {
         		// temporarily change TCCL, just for testing
         		Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
         		// now get the message from ObjectMessage
-        		VoInformeDeAuditoria voInformeAuditoria = (VoInformeDeAuditoria) objectMessage.getObject();
-        		InformeDeAuditoria informeAuditoria = new InformeDeAuditoria();
-    			informeAuditoria.setDescripcion(voInformeAuditoria.getDescripcion());
-    			informeAuditoria.setFecha(new Date());
+        		String voInformeAuditoria =String.valueOf(objectMessage.getObject());
+        		LogDTO informeAuditoria = new LogDTO();
+        		String[] i =voInformeAuditoria.split("_");
+        		informeAuditoria.setIdModulo(i[0]);
+        		informeAuditoria.setMensaje(i[1]);
+        	
+        		System.out.println("LA FECHA EN LA QUE SE RECIBIO ES:"+new Date());
     			fachada.generarInformeAuditoria(informeAuditoria);
-    			System.out.println("----------- Se realizï¿½ el informe correctamente -----------");
+    			System.out.println("----------- Se realizó el informe correctamente -----------");
         	}
         	finally
         	{
@@ -60,7 +64,7 @@ public class JMSInforme implements MessageListener {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("----------- Error al realizar el informe de auditorï¿½a -----------");
+			System.out.println("----------- Error al realizar el informe de auditoría -----------");
 			System.out.println(e.getMessage());
 		}
     }

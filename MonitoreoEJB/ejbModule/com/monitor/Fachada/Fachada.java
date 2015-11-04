@@ -1,16 +1,16 @@
 package com.monitor.Fachada;
 
-import java.util.ArrayList;
+import java.text.ParseException;
 
 import javax.ejb.*;
 
 import com.monitor.business.ISBInformesAuditoria;
 import com.monitor.business.SBVentaBeanLocal;
 
-import dominio.InformeDeAuditoria;
-import vos.VoDespacho;
-import vos.VoCarrito;
-import vos.VoVenta;
+import vos.LogDTO;
+import vos.VentaDTO;
+
+ 
 
 @Stateless
 public class Fachada implements IFachada {
@@ -20,25 +20,17 @@ public class Fachada implements IFachada {
 	@EJB 
 	ISBInformesAuditoria SBinforme;
 	@Override
-	public String procesarVenta(VoVenta venta) {
+	public String procesarVenta(VentaDTO venta) {
 		return SBventa.procesarVenta(venta);
 	}
 	@Override
-	public void generarInformeAuditoria(InformeDeAuditoria i) {
+	public void generarInformeAuditoria(LogDTO i) throws ParseException {
 		SBinforme.generarInformeAuditoria(i);
 		
 	}
-	@Override
-	public ArrayList<VoVenta> obtenerVentasSinOrdenesDeDespacho() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<VoDespacho> obtenerDespachosActivos() {
-		// TODO Auto-generated method stub
-		return null;
-	public String procesarCarrito(VoCarrito carrito){
+	public String procesarCarrito(String carrito){
 		return SBventa.procesarCarrito(carrito);
 	}
-}
+	}
+
  

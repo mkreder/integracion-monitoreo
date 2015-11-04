@@ -1,12 +1,17 @@
 package com.monitor.webServiceInterface;
 
-import vos.VoCarrito;
-import vos.VoVenta;
+import vos.ResultadoDTO;
+import vos.VentaDTO;
 
 public interface IWSProcVenta {
 
-	String procesarVenta(VoVenta venta);
+	
 
-	String procesarCarrito(VoCarrito carrito);
+
+	String notificarCarrito(String notificacion);
+
+
+
+	ResultadoDTO notificarVenta(VentaDTO venta);
 
 }
