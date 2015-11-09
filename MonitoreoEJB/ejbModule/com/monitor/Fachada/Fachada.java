@@ -1,6 +1,7 @@
 package com.monitor.Fachada;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.ejb.*;
 
@@ -9,6 +10,7 @@ import com.monitor.business.SBVentaBeanLocal;
 
 import vos.LogDTO;
 import vos.VentaDTO;
+import vos.VoOrdenDespacho;
 
  
 
@@ -30,6 +32,16 @@ public class Fachada implements IFachada {
 	}
 	public String procesarCarrito(String carrito){
 		return SBventa.procesarCarrito(carrito);
+	}
+	@Override
+	public ArrayList<VentaDTO> obtenerVentasSinOrdenesDeDespacho() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<VoOrdenDespacho> obtenerDespachosActivos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	}
 

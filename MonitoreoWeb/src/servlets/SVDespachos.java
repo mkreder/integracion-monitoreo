@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import businessDelegate.BD;
+import dominio.Despacho;
+import dominio.DespachoVentaPreventivo;
 import vos.VoDespacho;
 import vos.VoVenta;
 
@@ -33,8 +35,8 @@ public class SVDespachos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("action") == null ) {
-			ArrayList<VoDespacho> despachos = BD.getInstancia().obtenerDespachosActivos();
-			ArrayList<VoVenta> ventassionod = BD.getInstancia().obtenerVentasSinOrdenesDeDespacho();
+			ArrayList<Despacho> despachos = BD.getInstancia().obtenerDespachosActivos();
+			ArrayList<DespachoVentaPreventivo> ventassionod = BD.getInstancia().obtenerVentasSinOrdenesDeDespacho();
 			request.setAttribute("despachos", despachos);
 			request.setAttribute("ventassionod", ventassionod);
 			request.getRequestDispatcher("despachos.jsp").forward(request, response);

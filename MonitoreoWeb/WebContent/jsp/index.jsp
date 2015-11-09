@@ -11,6 +11,7 @@
 <title>Sistema de logística y monitoreo</title>
 </head>
 <head>
+<link rel="STYLESHEET" href="css/jsp-estilos.css" type="text/css" />
 <title>Sistema de logística y monitoreo</title>
 </head>
 	<body style="background-color: gray;">
@@ -51,7 +52,7 @@
 				</a>
 			</div>
 			<div class="ui-block-a" style="padding: 20px; background-color: gray;">
-				<a href="jsp/reporteDeVentasPorPortal.jsp" id="botonVentasPortales" data-role="button"
+				<a href="" id="botonVentasPortales" data-role="button"
 					data-icon="bars" data-iconpos="left" data-theme="e">
 					Ver ventas de portales
 				</a>
