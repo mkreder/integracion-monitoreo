@@ -3,19 +3,25 @@ package dominio;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
-public class InformeAuditoria implements Serializable{
+@Entity
+@Table(name = "Auditoria")
+public class InformeDeAuditoria implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private long id;
 	private Date fecha;
 	private String descripcion;
-	
+	private String modulo;
 	/*GETTERS Y SETTERS*/
 	
-	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -38,6 +44,14 @@ public class InformeAuditoria implements Serializable{
 	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(String modulo) {
+		this.modulo = modulo;
 	}
 	
 }

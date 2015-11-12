@@ -1,23 +1,29 @@
+
 package dominio;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
-
+@Entity
+@Table(name="Producto")
 public class Producto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private long id;
-	private long codigo;
+	private long codigo;//El codigo es propio del producto pero nosotros lo guardamos por ID
 	private String descripcion;
 	private float precio;
-	private long cantidadVentas;
+	private long cantidadVendidos;
 	
 	/*GETTERS Y SETTERS*/
 	
-	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -26,12 +32,12 @@ public class Producto implements Serializable{
 		this.id = id;
 	}
 	
-	public long getCantidadVentas() {
-		return cantidadVentas;
+	public long getCantidadVendidos() {
+		return cantidadVendidos;
 	}
 	
-	public void setCantidadVentas(long cantidadVentas) {
-		this.cantidadVentas = cantidadVentas;
+	public void setcantidadVendidos(long cantidadVendidos) {
+		this.cantidadVendidos = cantidadVendidos;
 	}
 	
 	public long getCodigo() {

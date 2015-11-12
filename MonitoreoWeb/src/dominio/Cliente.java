@@ -1,9 +1,16 @@
 package dominio;
 
+
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name = "Cliente")
 public class Cliente implements Serializable{
 	
 	
@@ -11,21 +18,21 @@ public class Cliente implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long id;
-	private String coordenada;
+	private long idCliente;
+	private String coordenada;//Por ahora las manejamos como STRING hay que ver q hacen los otros grupos
 	private long dni;
 	private String nombre;
 	private String apelido;
 
 	/*GETTERS Y SETTERS*/
 	
-	
-	public long getId() {
-		return id;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	public long getIdCliente() {
+		return idCliente;
 	}
 	
-	public void setId(long id) {
-		this.id = id;
+	public void setIdCliente(long idCliente) {
+		this.idCliente = idCliente;
 	}
 	
 	public String getNombre() {

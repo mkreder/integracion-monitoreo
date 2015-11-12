@@ -2,8 +2,14 @@ package dominio;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name="Portal")
 public class Portal implements Serializable {
 
 	/**
@@ -16,6 +22,7 @@ public class Portal implements Serializable {
 	
 	/*GETTERS Y SETTERS*/
 	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}

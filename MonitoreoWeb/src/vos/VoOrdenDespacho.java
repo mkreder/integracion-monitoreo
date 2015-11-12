@@ -2,62 +2,52 @@ package vos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+ 
+ 
+ 
 public class VoOrdenDespacho implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private long id;
-	private boolean estaEnviada;
-	private Date fecha;
-	private VoDespacho despacho;
-	private VoVenta venta;
+	private int codigoOrdenDeDespacho;
+	private String nombrePortalWeb;
+	private String nombreLogisticaYMonitoreo;
+	private List<VoDetalleOrden> detalle;
 	
-	/*GETTERS Y SETTERS*/
+	/* GETTERS Y SETTERS */
 	
- 
-	public long getId() {
-		return id;
+	public int getCodigoOrdenDeDespacho() {
+		return codigoOrdenDeDespacho;
 	}
 	
-	public void setId(long id) {
-		this.id = id;
+	public void setCodigoOrdenDeDespacho(int codigoOrdenDeDespacho) {
+		this.codigoOrdenDeDespacho = codigoOrdenDeDespacho;
 	}
 	
-	public Date getFecha() {
-		return fecha;
+	public String getNombreLogisticaYMonitoreo() {
+		return nombreLogisticaYMonitoreo;
 	}
 	
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setNombreLogisticaYMonitoreo(String nombreLogisticaYMonitoreo) {
+		this.nombreLogisticaYMonitoreo = nombreLogisticaYMonitoreo;
 	}
 	
-	public void setEstaEnviada(boolean estaEnviada) {
-		this.estaEnviada = estaEnviada;
+	public void setNombrePortalWeb(String nombrePortalWeb) {
+		this.nombrePortalWeb = nombrePortalWeb;
 	}
 	
-	public boolean getEstaEnviada(){
-		return estaEnviada;
-	}
-
-	 
-	public VoDespacho getDespacho() {
-		return despacho;
+	public String getNombrePortalWeb() {
+		return nombrePortalWeb;
 	}
 	
-	public void setDespacho(VoDespacho despacho) {
-		this.despacho = despacho;
+	public List<VoDetalleOrden> getDetallerOrden() {
+		return detalle;
 	}
 	
- 
-	public VoVenta getVenta() {
-		return venta;
-	}
-	
-	public void setVenta(VoVenta venta) {
-		this.venta = venta;
+	public void setDetallerOrden(
+			List<VoDetalleOrden> detalle) {
+		this.detalle = detalle;
 	}
 	
 }

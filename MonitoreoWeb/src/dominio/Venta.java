@@ -4,7 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Venta")
 public class Venta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -20,20 +33,22 @@ public class Venta implements Serializable{
 	private List<ItemVenta> itemsVenta;
 
 	//CONSTANTES
-	public static final String CON_VENTANODESPACHADA 		= "ND";
-	public static final String CON_VENTADESPACHADA 			= "SD";
+	public static final String  con_noDespachada 		= "NO";
+	public static final String con_despachada 			= "SI";
 	
-//	public float calcularMonto(){
-//		float monto = 0;
-//		for(ItemVenta itemVenta : this.getItemsVenta()){
-//			monto += itemVenta.getProducto().getPrecio()*itemVenta.getCantidad();
-//		}
-//		return monto;	
-//	}
-//	
+	public float calcularMonto(){
+		float monto = 0;
+		float i=0;
+		for(ItemVenta itemVenta : this.getItemsVenta()){
+			i= itemVenta.getProducto().getPrecio()*itemVenta.getCantidad();
+			monto=monto+i;
+		}
+		return monto;	
+	}
+	
 	/*GETTERS Y SETTERS*/
 	
-	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -42,7 +57,8 @@ public class Venta implements Serializable{
 		this.id = id;
 	}
 	
-
+	@ManyToOne
+	@JoinColumn(name = "id_Cliente")
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -75,7 +91,8 @@ public class Venta implements Serializable{
 		this.estado = estado;
 	}
 	
-	
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name = "id_Venta")
 	public List<ItemVenta> getItemsVenta() {
 		return itemsVenta;
 	}
@@ -84,7 +101,8 @@ public class Venta implements Serializable{
 		this.itemsVenta = itemsVenta;
 	}
 
-	
+	@ManyToOne
+	@JoinColumn(name="id_Portal")
 	public Portal getPortal() {
 		return portal;
 	}
@@ -93,7 +111,8 @@ public class Venta implements Serializable{
 		this.portal = portal;
 	}
 	
-	
+	@OneToOne
+	@JoinColumn(name="id_ordenDespacho")
 	public OrdenDespacho getOrdenDespacho() {
 		return ordenDespacho;
 	}
