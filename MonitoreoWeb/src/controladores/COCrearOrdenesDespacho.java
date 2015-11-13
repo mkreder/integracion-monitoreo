@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 import businessDelegate.BD;
 import dominio.Despacho;
-import dominio.DespachoVentaPreventivo;
+import vos.VentaDTO;
+import vos.VoOrdenDespacho;
 
 public class COCrearOrdenesDespacho {
 
 	BD  controlador = BD.getInstancia();
 	
 	
-	private ArrayList<DespachoVentaPreventivo> 	despachoVentaPreventivos;
+	private ArrayList<VentaDTO> 	despachoVentaPreventivos;
 	private Long[] 								codigosVentas;
 	private Long[] 								idsDespachosAsociadosAVentas;
 	private String[] 							nombreDespachosAsociadosAVentas;
@@ -126,7 +127,7 @@ public class COCrearOrdenesDespacho {
 		idVenta8 = 0;
 		idVenta9 = 0;
 		idVenta10 = 0;
-		despachoVentaPreventivos = new ArrayList<DespachoVentaPreventivo>();
+		despachoVentaPreventivos = new ArrayList<VentaDTO>();
 		idsVentas = new Long[10];
 		codigosVentas = new Long[10];
 		idsDespachosAsociadosAVentas = new Long[10];
@@ -135,31 +136,31 @@ public class COCrearOrdenesDespacho {
 		despachoVentaPreventivos = controlador.obtenerVentasSinOrdenesDeDespacho();
 //		//Cargo las ventas con sus despachos preventivos
 		int i = 0;
-		for(DespachoVentaPreventivo despachoVentaPreventivo : despachoVentaPreventivos){
+		for(VentaDTO venta : despachoVentaPreventivos){
 			if(i<10){
 				if(i==0)
-					idVenta1 = despachoVentaPreventivo.getVenta().getId();
+					idVenta1 = venta.getNroVenta();
 				if(i==1)
-					idVenta2 = despachoVentaPreventivo.getVenta().getId();
+					idVenta2 = venta.getNroVenta();
 				if(i==2)
-					idVenta3 = despachoVentaPreventivo.getVenta().getId();
+					idVenta3 = venta.getNroVenta();
 				if(i==3)
-					idVenta4 = despachoVentaPreventivo.getVenta().getId();
+					idVenta4 = venta.getNroVenta();
 				if(i==4)
-					idVenta5 = despachoVentaPreventivo.getVenta().getId();
+					idVenta5 = venta.getNroVenta();
 				if(i==5)
-					idVenta6 = despachoVentaPreventivo.getVenta().getId();
+					idVenta6 = venta.getNroVenta();
 				if(i==6)
-					idVenta7 = despachoVentaPreventivo.getVenta().getId();
+					idVenta7 = venta.getNroVenta();
 				if(i==7)
-					idVenta8 = despachoVentaPreventivo.getVenta().getId();
+					idVenta8 = venta.getNroVenta();
 				if(i==8)
-					idVenta9 = despachoVentaPreventivo.getVenta().getId();
+					idVenta9 = venta.getNroVenta();
 				if(i==9)
-					idVenta10 = despachoVentaPreventivo.getVenta().getId();
-				codigosVentas[i] = despachoVentaPreventivo.getVenta().getCodigo();
-				idsDespachosAsociadosAVentas[i] = despachoVentaPreventivo.getDespacho().getId();
-				nombreDespachosAsociadosAVentas[i] = despachoVentaPreventivo.getDespacho().getNombre();
+					idVenta10 = venta.getNroVenta();
+			//	codigosVentas[i] =
+				idsDespachosAsociadosAVentas[i] = controlador.getInstancia().obtenerOrdenDespachoDeVenta(venta.getNroVenta()).getDespacho().getId();
+				nombreDespachosAsociadosAVentas[i] = controlador.getInstancia().obtenerOrdenDespachoDeVenta(venta.getNroVenta()).getDespacho().getNombre();
 				i++;
 			}
 		}
@@ -172,16 +173,16 @@ public class COCrearOrdenesDespacho {
 			i++;
 		}
 //		//Cargo los combos de despachos para cada una de las ventas
-		ArrayList<Despacho> despachosActivos = controlador.obtenerDespachosActivos();
+		ArrayList<VoOrdenDespacho> despachosActivos = controlador.obtenerDespachosActivos();
 		
 		comboDespachos1 = new ArrayList<Long>();
 		comboNombresDespachos1 = new ArrayList<String>();
 		comboDespachos1.add(idsDespachosAsociadosAVentas[0]);
 		comboNombresDespachos1.add(nombreDespachosAsociadosAVentas[0]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos1.contains(despacho.getId())){
 				comboDespachos1.add(despacho.getId());
-				comboNombresDespachos1.add(despacho.getNombre());
+				comboNombresDespachos1.add(despacho.getDespacho().getNombre());
 			}
 		}
 		
@@ -189,10 +190,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos2 = new ArrayList<String>();
 		comboDespachos2.add(idsDespachosAsociadosAVentas[1]);
 		comboNombresDespachos2.add(nombreDespachosAsociadosAVentas[1]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos2.contains(despacho.getId())){
 				comboDespachos2.add(despacho.getId());
-				comboNombresDespachos2.add(despacho.getNombre());
+				comboNombresDespachos2.add(despacho.getDespacho().getNombre());
 			}
 		}
 
@@ -200,10 +201,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos3 = new ArrayList<String>();
 		comboDespachos3.add(idsDespachosAsociadosAVentas[2]);
 		comboNombresDespachos3.add(nombreDespachosAsociadosAVentas[2]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos3.contains(despacho.getId())){
 				comboDespachos3.add(despacho.getId());
-				comboNombresDespachos3.add(despacho.getNombre());
+				comboNombresDespachos3.add(despacho.getDespacho().getNombre());
 			}
 		}
 
@@ -211,10 +212,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos4 = new ArrayList<String>();
 		comboDespachos4.add(idsDespachosAsociadosAVentas[3]);
 		comboNombresDespachos4.add(nombreDespachosAsociadosAVentas[3]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos4.contains(despacho.getId())){
 				comboDespachos4.add(despacho.getId());
-				comboNombresDespachos4.add(despacho.getNombre());
+				comboNombresDespachos4.add(despacho.getDespacho().getNombre());
 			}
 		}
 			
@@ -222,10 +223,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos5 = new ArrayList<String>();
 		comboDespachos5.add(idsDespachosAsociadosAVentas[4]);
 		comboNombresDespachos5.add(nombreDespachosAsociadosAVentas[4]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos5.contains(despacho.getId())){
 				comboDespachos5.add(despacho.getId());
-				comboNombresDespachos5.add(despacho.getNombre());
+				comboNombresDespachos5.add(despacho.getDespacho().getNombre());
 			}
 		}
 			
@@ -233,10 +234,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos6 = new ArrayList<String>();
 		comboDespachos6.add(idsDespachosAsociadosAVentas[5]);
 		comboNombresDespachos6.add(nombreDespachosAsociadosAVentas[5]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos6.contains(despacho.getId())){
 				comboDespachos6.add(despacho.getId());
-				comboNombresDespachos6.add(despacho.getNombre());
+				comboNombresDespachos6.add(despacho.getDespacho().getNombre());
 			}
 		}
 
@@ -244,10 +245,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos7 = new ArrayList<String>();
 		comboDespachos7.add(idsDespachosAsociadosAVentas[6]);
 		comboNombresDespachos7.add(nombreDespachosAsociadosAVentas[6]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos7.contains(despacho.getId())){
 				comboDespachos7.add(despacho.getId());
-				comboNombresDespachos7.add(despacho.getNombre());
+				comboNombresDespachos7.add(despacho.getDespacho().getNombre());
 			}
 		}
 
@@ -255,10 +256,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos8 = new ArrayList<String>();
 		comboDespachos8.add(idsDespachosAsociadosAVentas[7]);
 		comboNombresDespachos8.add(nombreDespachosAsociadosAVentas[7]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos8.contains(despacho.getId())){
 				comboDespachos8.add(despacho.getId());
-				comboNombresDespachos8.add(despacho.getNombre());
+				comboNombresDespachos8.add(despacho.getDespacho().getNombre());
 			}
 		}
 
@@ -266,10 +267,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos9 = new ArrayList<String>();
 		comboDespachos9.add(idsDespachosAsociadosAVentas[8]);
 		comboNombresDespachos9.add(nombreDespachosAsociadosAVentas[8]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos9.contains(despacho.getId())){
 				comboDespachos9.add(despacho.getId());
-				comboNombresDespachos9.add(despacho.getNombre());
+				comboNombresDespachos9.add(despacho.getDespacho().getNombre());
 			}
 		}
 
@@ -277,10 +278,10 @@ public class COCrearOrdenesDespacho {
 		comboNombresDespachos10 = new ArrayList<String>();
 		comboDespachos10.add(idsDespachosAsociadosAVentas[9]);
 		comboNombresDespachos10.add(nombreDespachosAsociadosAVentas[9]);
-		for(Despacho despacho : despachosActivos){
+		for(VoOrdenDespacho despacho : despachosActivos){
 			if(!comboDespachos10.contains(despacho.getId())){
 				comboDespachos10.add(despacho.getId());
-				comboNombresDespachos10.add(despacho.getNombre());
+				comboNombresDespachos10.add(despacho.getDespacho().getNombre());
 			}
 		}	
 	}
@@ -296,12 +297,12 @@ public class COCrearOrdenesDespacho {
 	
 	/* GETTERS Y SETTERS */
 	
-	public ArrayList<DespachoVentaPreventivo> getDespachoVentaPreventivos() {
+	public ArrayList<VentaDTO> getDespachoVentaPreventivos() {
 		return despachoVentaPreventivos;
 	}
 	
 	public void setDespachoVentaPreventivos(
-			ArrayList<DespachoVentaPreventivo> despachoVentaPreventivos) {
+			ArrayList<VentaDTO> despachoVentaPreventivos) {
 		this.despachoVentaPreventivos = despachoVentaPreventivos;
 	}
 	

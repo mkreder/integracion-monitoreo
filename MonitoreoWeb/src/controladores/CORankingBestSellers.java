@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import businessDelegate.BD;
 import dominio.Producto;
+import vos.ArticuloDTO;
 
 public class CORankingBestSellers {
 	
@@ -14,7 +15,7 @@ public class CORankingBestSellers {
 	
 	public CORankingBestSellers(){
 		super();
-		ArrayList<Producto> productosBestSeller = new ArrayList<Producto>();
+		ArrayList<ArticuloDTO> productosBestSeller = new ArrayList<Producto>();
 		productosBestSeller = controlador.obtenerProductosBestSeller();
 		productos = new String[10];
 		cantidadVentas = new String[10];
