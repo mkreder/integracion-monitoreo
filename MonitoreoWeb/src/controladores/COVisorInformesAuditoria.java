@@ -1,7 +1,7 @@
 package controladores;
 
 import businessDelegate.BD;
-import dominio.InformeAuditoria;
+import vos.InformeAuditoriaDTO;
 
 public class COVisorInformesAuditoria {
 
@@ -18,7 +18,7 @@ public class COVisorInformesAuditoria {
 	
 	public void cargarInformesNearOnLine(){
 		int i = 0;
-		for(InformeAuditoria informeAuditoria : controlador.obtenerInformesAuditoriaNearOnLine()){
+		for(InformeAuditoriaDTO informeAuditoria : controlador.obtenerInformesAuditoriaNearOnLine()){
 			if(i < 10){
 				descInformes[i] = informeAuditoria.getDescripcion();
 				fechaInformes[i] = String.valueOf(informeAuditoria.getFecha());

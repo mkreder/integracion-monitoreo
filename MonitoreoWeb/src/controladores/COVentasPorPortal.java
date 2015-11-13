@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import businessDelegate.BD;
 import dominio.Portal;
+import vos.PortalDTO;
 
 public class COVentasPorPortal {
 
@@ -28,7 +29,7 @@ public class COVentasPorPortal {
 	}
 	
 	public void inicializarComponentes(){
-		for(Portal portal : controlador.obtenerPortales()){
+		for(PortalDTO portal : controlador.obtenerPortales()){
 			idPortales.add(portal.getId());
 			nombresPortales.add(portal.getDescripcion());
 		}
