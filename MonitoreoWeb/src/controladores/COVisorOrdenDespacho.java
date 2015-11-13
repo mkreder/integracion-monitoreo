@@ -2,13 +2,16 @@ package controladores;
 
 import javax.ejb.EJB;
 
-import sessionFacade.FachadaLogYMon;
+import com.monitor.Fachada.IFachada;
+
 import dominio.Venta;
+import vos.VentaDTO;
+import vos.VoOrdenDespacho;
 
 public class COVisorOrdenDespacho {
 
 //	private BD controlador = BD.getInstancia();
-	@EJB FachadaLogYMon controlador;
+	@EJB IFachada controlador;
 	
 	private String enviada;
 	private String fecha;
@@ -24,11 +27,16 @@ public class COVisorOrdenDespacho {
 	}
 	
 	public void cargarDatosOrdenDespacho(long idVenta){
-		Venta venta = controlador.obtenerVenta(idVenta);
-		codVenta = String.valueOf(venta.getCodigo());
-		despacho = venta.getOrdenDespacho().getDespacho().getNombre();
-		enviada = venta.getEstado().equalsIgnoreCase(Venta.CON_VENTADESPACHADA)? "Despachada" : "No despachada";
-		fecha = String.valueOf(venta.getOrdenDespacho().getFecha());
+		VentaDTO venta = controlador.obtenerVenta(idVenta);
+		VoOrdenDespacho od = controlador.obtenerOrdenDespachoDeVenta(idVenta);
+		codVenta = String.valueOf(venta.getNroVenta());
+		despacho = Long.toString(od.getId());
+		if ( od.getEstaEnviada() == true){
+			enviada = "Despachada";
+		}else{
+			enviada = "No Despachada";
+		}
+		fecha = venta.getFecha();
 	}
 	
 	/* GETTERS Y SETTERS */

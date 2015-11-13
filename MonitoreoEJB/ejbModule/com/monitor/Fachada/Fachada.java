@@ -24,7 +24,6 @@ public class Fachada implements IFachada {
 	SBVentaBeanLocal SBventa;
 	@EJB 
 	ISBInformesAuditoria SBinforme;
-	/* Comento esta parte, habria que ver si necesitamos estos metodos o no
 	@Override
 	public String procesarVenta(VentaDTO venta) {
 		return SBventa.procesarVenta(venta);
@@ -34,9 +33,8 @@ public class Fachada implements IFachada {
 		SBinforme.generarInformeAuditoria(i);
 		
 	}
-	*/
-	public String procesarCarrito(String carrito){
-		return SBventa.procesarCarrito(carrito);
+	public void procesarCarrito(String carrito){
+		 SBventa.procesarCarrito(carrito);
 	}
 	@Override
 	public ArrayList<VentaDTO> obtenerVentasSinOrdenesDeDespacho() {

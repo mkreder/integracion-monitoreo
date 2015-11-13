@@ -4,50 +4,74 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import dominio.Despacho;
+import dominio.Venta;
+
  
  
  
 public class VoOrdenDespacho implements Serializable{
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	private int codigoOrdenDeDespacho;
-	private String nombrePortalWeb;
-	private String nombreLogisticaYMonitoreo;
-	private List<VoDetalleOrden> detalle;
+	private long id;
+	private boolean estaEnviada;
+	private Date fecha;
+	private Despacho despacho;
+	private Venta venta;
 	
-	/* GETTERS Y SETTERS */
+	/*GETTERS Y SETTERS*/
 	
-	public int getCodigoOrdenDeDespacho() {
-		return codigoOrdenDeDespacho;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	public long getId() {
+		return id;
 	}
 	
-	public void setCodigoOrdenDeDespacho(int codigoOrdenDeDespacho) {
-		this.codigoOrdenDeDespacho = codigoOrdenDeDespacho;
+	public void setId(long id) {
+		this.id = id;
 	}
 	
-	public String getNombreLogisticaYMonitoreo() {
-		return nombreLogisticaYMonitoreo;
+	public Date getFecha() {
+		return fecha;
 	}
 	
-	public void setNombreLogisticaYMonitoreo(String nombreLogisticaYMonitoreo) {
-		this.nombreLogisticaYMonitoreo = nombreLogisticaYMonitoreo;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 	
-	public void setNombrePortalWeb(String nombrePortalWeb) {
-		this.nombrePortalWeb = nombrePortalWeb;
+	public void setEstaEnviada(boolean estaEnviada) {
+		this.estaEnviada = estaEnviada;
 	}
 	
-	public String getNombrePortalWeb() {
-		return nombrePortalWeb;
+	public boolean getEstaEnviada(){
+		return estaEnviada;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="id_Despacho")
+	public Despacho getDespacho() {
+		return despacho;
 	}
 	
-	public List<VoDetalleOrden> getDetallerOrden() {
-		return detalle;
+	public void setDespacho(Despacho despacho) {
+		this.despacho = despacho;
 	}
 	
-	public void setDetallerOrden(
-			List<VoDetalleOrden> detalle) {
-		this.detalle = detalle;
+	@OneToOne(mappedBy = "ordenDespacho")
+	public Venta getVenta() {
+		return venta;
 	}
 	
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}	
 }

@@ -28,5 +28,8 @@ public interface IFachada {
 	ArrayList<InformeAuditoriaDTO> cargarInformesAuditoriaNearOnLine();
 	ArrayList<PortalDTO> obtenerPortales();
 	VentaDTO obtenerVenta(long idVenta);
+	String procesarVenta(VentaDTO venta);
+	void generarInformeAuditoria(LogDTO i) throws ParseException;
+	void procesarCarrito(String notificacion);
 	
 }
