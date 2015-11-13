@@ -8,7 +8,10 @@ import javax.ejb.*;
 import com.monitor.business.ISBInformesAuditoria;
 import com.monitor.business.SBVentaBeanLocal;
 
+import vos.ArticuloDTO;
+import vos.InformeAuditoriaDTO;
 import vos.LogDTO;
+import vos.PortalDTO;
 import vos.VentaDTO;
 import vos.VoOrdenDespacho;
 
@@ -21,6 +24,7 @@ public class Fachada implements IFachada {
 	SBVentaBeanLocal SBventa;
 	@EJB 
 	ISBInformesAuditoria SBinforme;
+	/* Comento esta parte, habria que ver si necesitamos estos metodos o no
 	@Override
 	public String procesarVenta(VentaDTO venta) {
 		return SBventa.procesarVenta(venta);
@@ -30,6 +34,7 @@ public class Fachada implements IFachada {
 		SBinforme.generarInformeAuditoria(i);
 		
 	}
+	*/
 	public String procesarCarrito(String carrito){
 		return SBventa.procesarCarrito(carrito);
 	}
@@ -40,6 +45,51 @@ public class Fachada implements IFachada {
 	}
 	@Override
 	public ArrayList<VoOrdenDespacho> obtenerDespachosActivos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void asociarOrdenesDeDespachoAVentas(ArrayList<Long> idsVentas, ArrayList<Long> idsDespachos) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public ArrayList<VentaDTO> obtenerVentas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<VentaDTO> obtenerVentasDePortal(long idPortal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public VoOrdenDespacho obtenerOrdenDespachoDeVenta(long idVenta) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<ArticuloDTO> obtenerProductosBestSeller() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void cambiarEstadoOrdenDespacho(long idOrdenDeDespacho) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public ArrayList<InformeAuditoriaDTO> cargarInformesAuditoriaNearOnLine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<PortalDTO> obtenerPortales() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public VentaDTO obtenerVenta(long idVenta) {
 		// TODO Auto-generated method stub
 		return null;
 	}

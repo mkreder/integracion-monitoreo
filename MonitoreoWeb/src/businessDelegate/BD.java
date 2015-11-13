@@ -7,21 +7,21 @@ import javax.naming.InitialContext;
 
 import com.monitor.Fachada.*;
 
-import vos.VoDespacho;
-import vos.VoVenta;
+import vos.ArticuloDTO;
+import vos.InformeAuditoriaDTO;
+import vos.PortalDTO;
+import vos.VentaDTO;
+import vos.VoOrdenDespacho;
 import dominio.Despacho;
-import dominio.DespachoVentaPreventivo;
-import dominio.InformeAuditoria;
 import dominio.OrdenDespacho;
 import dominio.Portal;
 import dominio.Producto;
 import dominio.Venta;
-import sessionFacade.FachadaLogYMon;
 
 public class BD {
 
 	private static BD instancia;
-	private FachadaLogYMon adminFachada;
+	private IFachada adminFachada;
 	private BD() {
 		lookupService();
 	}
@@ -63,7 +63,7 @@ public class BD {
 //			 adminFachada = (FachadaLogYMon) context
 //					.lookup(appName + "/" + moduleName + "/" + sessionBeanName
 //							+ "!" + viewClassName);
-   			 adminFachada = (FachadaLogYMon)context.lookup("java:global/MonitoreoEAR/MonitoreoEJB/Fachada!sessionFacade.IFachada");
+   			 adminFachada = (IFachada)context.lookup("java:global/MonitoreoEAR/MonitoreoEJB/Fachada!sessionFacade.IFachada");
 
 		} catch (Exception e) {
 			System.out.println("error al levantar servicio");
@@ -72,7 +72,7 @@ public class BD {
 	}
 
 	/* METODOS DE LA FACHADA */
-	public ArrayList<DespachoVentaPreventivo> obtenerVentasSinOrdenesDeDespacho() {
+	public ArrayList<VentaDTO> obtenerVentasSinOrdenesDeDespacho() {
 		return adminFachada.obtenerVentasSinOrdenesDeDespacho();
 	}
 
@@ -80,23 +80,23 @@ public class BD {
 		adminFachada.asociarOrdenesDeDespachoAVentas(idsVentas, idsDespachos);
 	}
 
-	public ArrayList<Venta> obtenerVentas() {
+	public ArrayList<VentaDTO> obtenerVentas() {
 		return adminFachada.obtenerVentas();
 	}
 
-	public ArrayList<Venta> obtenerVentasDePortal(long idPortal){
+	public ArrayList<VentaDTO> obtenerVentasDePortal(long idPortal){
 		return adminFachada.obtenerVentasDePortal(idPortal);
 	}
 
-	public OrdenDespacho obtenerOrdenDespachoDeVenta(long idVenta){
+	public VoOrdenDespacho obtenerOrdenDespachoDeVenta(long idVenta){
 		return adminFachada.obtenerOrdenDespachoDeVenta(idVenta);
 	}
 
-	public ArrayList<Despacho> obtenerDespachosActivos(){
+	public ArrayList<VoOrdenDespacho> obtenerDespachosActivos(){
 		return adminFachada.obtenerDespachosActivos();
 	}
 	
-	public ArrayList<Producto> obtenerProductosBestSeller(){
+	public ArrayList<ArticuloDTO> obtenerProductosBestSeller(){
 		return adminFachada.obtenerProductosBestSeller();
 	}
 	
@@ -104,15 +104,15 @@ public class BD {
 		adminFachada.cambiarEstadoOrdenDespacho(idOrdenDeDespacho);
 	}
 	
-	public ArrayList<InformeAuditoria> obtenerInformesAuditoriaNearOnLine(){
+	public ArrayList<InformeAuditoriaDTO> obtenerInformesAuditoriaNearOnLine(){
 		return adminFachada.cargarInformesAuditoriaNearOnLine();
 	}
 	
-	public ArrayList<Portal> obtenerPortales(){
+	public ArrayList<PortalDTO> obtenerPortales(){
 		return adminFachada.obtenerPortales();
 	}
 
-	public Venta obtenerVenta(long idVenta){
+	public VentaDTO obtenerVenta(long idVenta){
 		return adminFachada.obtenerVenta(idVenta);
 	}
 	
